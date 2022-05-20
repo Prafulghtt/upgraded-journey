@@ -13,7 +13,7 @@ jobs:
       - name: Run a multi-line script
         run: |
                 docker build -t app .
-                docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_SECRET}}
+                 echo ${{secret:DOCKER_SECRET }} :docker login -u ${{secrets.DOCKER_USER}} --stdin-password
                 docker tag  app prafulght/
                 docker push prafulght/test:
            
