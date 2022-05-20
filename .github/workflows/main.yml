@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a multi-line script
+        run: |
+                docker build -t app .
+                docker login -u prafulght -p 5e47f7ae-83e9-4951-bbeb-25050ebf3e76
+                docker tag  app prafulght/
+                docker push prafulght/test:
+           
+                
